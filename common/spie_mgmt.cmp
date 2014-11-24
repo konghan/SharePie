@@ -1,0 +1,87 @@
+
+struct mgmt_templogin_req{
+    1:string user
+}
+
+struct mgmt_templogin_rsp{
+    1:i32 type
+}
+
+struct mgmt_tempadd_req{
+    1:i32 type
+}
+
+struct mgmt_tempadd_rsp{
+    1:i32 code
+}
+
+struct mgmt_login_req{
+    1:string user
+    2:binary seed;
+    3:binary cred
+    4:string where
+}
+
+struct mgmt_login_rsp{
+    1:i32 ver
+}
+
+// user management
+struct mgmt_adduser_req{
+    1:string user
+    2:binary cred
+    3:i32 type
+}
+
+struct mgmt_adduser_rsp{
+}
+
+struct mgmt_deluser_req{
+    1:string user
+}
+
+struct mgmt_deluser_rsp{
+}
+
+struct mgmt_listuser_req{
+    1:i32 len
+}
+
+struct user{
+    1:string user
+    2:i32 type
+    3:i32 status
+}
+
+struct mgmt_listuser_rsp{
+    1:list<user> users
+}
+
+struct mgmt_updateuser_req{
+    1:string user
+    2:binary cred
+    3:i32 type
+}
+
+struct mgmt_updateuser_rsp{
+}
+
+
+// appliance system information
+struct mgmt_sysinfo_req{
+    1:i32 type
+}
+
+struct nif{
+    1:string name
+    2:string mac
+    3:string addr
+}
+
+struct mgmt_sysinfo_rsp{
+    1:i32 capacity_used
+    2:i32 capacity_free
+    3:i32 battery
+    4:list<nif> nifs
+}
+
